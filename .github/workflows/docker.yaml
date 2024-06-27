@@ -26,3 +26,9 @@ jobs:
         files: |
           linux.sh
         tag_name: latest
+
+    - name: delete-workflow-runs
+      uses: Mattraks/delete-workflow-runs@v2
+      with:
+        retain_days: 0
+        keep_minimum_runs: 0
