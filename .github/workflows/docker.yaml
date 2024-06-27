@@ -1,0 +1,28 @@
+name: Docker Installer Download
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '00 23 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  download_installer:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Download installers
+      run: |
+         curl -o linux.sh "https://get.docker.com"
+
+    - name: Release
+      uses: softprops/action-gh-release@v2
+      with:
+        files: |
+          linux.sh
+        tag_name: latest
