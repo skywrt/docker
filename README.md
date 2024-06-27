@@ -15,3 +15,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/skywrt/docker/main/insta
 ```bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/skywrt/docker/main/uninstall.sh)"
 ```
+### 小雅转存清理工具
+
+```bash -c "$(curl -sLk https://xiaoyahelper.ddsrem.com/aliyun_clear.sh | tail -n +2)" -s 5
+```
