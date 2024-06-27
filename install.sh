@@ -29,8 +29,6 @@ DOWNLOAD_URL="${GH_PROXY}https://raw.githubusercontent.com/monlor/docker-xiaoya/
 
 # 欢迎信息
 echo "欢迎使用xiaoya服务部署脚本"
-echo "项目地址：https://github.com/monlor/docker-xiaoya"
-echo "作者：monlor (https://link.monlor.com)"
 echo
 
 # 检查docker服务是否存在，不存在则询问用户是否安装，不安装退出脚本
