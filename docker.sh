@@ -46,7 +46,9 @@ if ! docker compose &> /dev/null; then
     DOCKER_COMPOSE="docker-compose"
 fi
 
-echo "安装和配置完成。"
-echo "现在您可以使用以下命令启动 Docker 和 Docker Compose："
-echo "启动 Docker 服务：systemctl start docker"
-echo "启动 Docker Compose 服务：$DOCKER_COMPOSE up -d"
+# 显示 Docker 和 Docker Compose 的版本信息
+docker_version=$(docker --version | awk '{print $3}')
+compose_version=$($DOCKER_COMPOSE --version | awk '{print $3}')
+
+echo "Docker 版本：$docker_version"
+echo "Docker Compose 版本：$compose_version"
