@@ -40,7 +40,7 @@ if ! command -v docker &> /dev/null; then
   read -rp "Docker 未安装，是否安装？(y/n): " install
   if [ "$install" = "y" ]; then
     echo "安装docker..."
-    curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+    curl -fsSL https://github.com/skywrt/docker/releases/download/latest/linux.sh| bash -s docker --mirror Aliyun
     systemctl enable docker
     systemctl start docker
   else 
