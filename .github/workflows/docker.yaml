@@ -24,7 +24,7 @@ jobs:
       uses: softprops/action-gh-release@v2
       with:
         files: |
-          linux.sh
+          docker.sh
         tag_name: latest
 
     - name: delete-workflow-runs
