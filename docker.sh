@@ -18,8 +18,6 @@ if ! command -v docker &> /dev/null; then
     fi
 fi
 
-DOCKER_COMPOSE="docker compose"
-
 # 检查是否安装了 compose 插件，docker compose 命令
 if ! docker compose &> /dev/null && ! which docker-compose &> /dev/null; then
     read -rp "Docker Compose 未安装，是否安装？(y/n): " install
@@ -42,13 +40,8 @@ if ! docker compose &> /dev/null && ! which docker-compose &> /dev/null; then
     fi
 fi
 
-if ! docker compose --version &> /dev/null; then
-    DOCKER_COMPOSE="docker-compose"
+# 如果 Docker 和 Docker Compose 已安装，则提示用户按任意键返回主菜单
+if command -v docker &> /dev/null && (docker compose &> /dev/null || which docker-compose &> /dev/null); then
+    read -n 1 -s -r -p "Docker 和 Docker Compose 已安装，请按任意键返回主菜单..."
+    echo
 fi
-
-# 显示 Docker 和 Docker Compose 的版本信息
-docker_version=$(docker --version | awk '{print $3}')
-compose_version=$($DOCKER_COMPOSE --version | awk 'NR==1{print $3}')
-
-echo "Docker 版本：$docker_version"
-echo "Docker Compose 版本：$compose_version"
