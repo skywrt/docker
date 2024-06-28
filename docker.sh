@@ -3,7 +3,7 @@
 # 检查docker服务是否存在，不存在则询问用户是否安装，不安装退出脚本
 if ! command -v docker &> /dev/null; then
     if [ "$(uname -o)" = "Darwin" ]; then
-        echo "Docker 未安装，请安装 Docker 后再运行脚本"
+        echo "Docker 未安装，请安装 Docker 后再运行脚本，推荐 OrbStack：https://orbstack.dev/"
         exit 1
     fi
     read -rp "Docker 未安装，是否安装？(y/n): " install
@@ -42,13 +42,13 @@ if ! docker compose &> /dev/null && ! which docker-compose &> /dev/null; then
     fi
 fi
 
-if ! docker compose &> /dev/null; then
+if ! docker compose --version &> /dev/null; then
     DOCKER_COMPOSE="docker-compose"
 fi
 
 # 显示 Docker 和 Docker Compose 的版本信息
 docker_version=$(docker --version | awk '{print $3}')
-compose_version=$($DOCKER_COMPOSE --version | awk '{print $3}')
+compose_version=$($DOCKER_COMPOSE --version | awk 'NR==1{print $3}')
 
 echo "Docker 版本：$docker_version"
 echo "Docker Compose 版本：$compose_version"
