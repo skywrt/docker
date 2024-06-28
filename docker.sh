@@ -32,7 +32,12 @@ if ! docker compose &> /dev/null && ! which docker-compose &> /dev/null; then
             echo "不支持的系统架构 $(uname -m)，请自行安装 Docker Compose（https://docs.docker.com/compose/install/linux/#install-using-the-repository）"
             exit 1
         fi
-        curl -SL "https://github.com/docker/compose/releases/download/v2.27.1/$file" -o /usr/local/bin/docker-compose
+        
+        # 获取最新版本号
+        latest_version=$(curl -sSLI -o /dev/null -w '%{url_effective}' https://github.com/docker/compose/releases/latest | awk -F '/' '{print $NF}')
+        
+        # 下载并安装最新版本
+        curl -SL "https://github.com/docker/compose/releases/download/${latest_version}/$file" -o /usr/local/bin/docker-compose
         chmod +x /usr/local/bin/docker-compose
     else
         echo "退出安装"
