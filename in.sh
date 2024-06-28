@@ -1,63 +1,63 @@
 #!/bin/bash
 
-# Function to install Docker
-install_docker() {
-    echo "Installing Docker..."
+# 安装 Docker
+安装_docker() {
+    echo "正在安装 Docker..."
     curl -fsSL https://github.com/skywrt/docker/releases/download/latest/linux.sh | bash -s docker --mirror Aliyun
 }
 
-# Function to deploy xiaoya service
-deploy_xiaoya() {
-    echo "Deploying xiaoya service..."
+# 部署小雅服务
+部署_xiaoya() {
+    echo "正在部署小雅服务..."
     bash -c "$(curl -fsSL https://raw.githubusercontent.com/skywrt/docker/main/install.sh)"
 }
 
-# Function to uninstall xiaoya service
-uninstall_xiaoya() {
-    echo "Uninstalling xiaoya service..."
+# 卸载小雅服务
+卸载_xiaoya() {
+    echo "正在卸载小雅服务..."
     bash -c "$(curl -fsSL https://raw.githubusercontent.com/skywrt/docker/main/uninstall.sh)"
 }
 
-# Function for xiaoya storage clean tool
-xiaoya_storage_clean() {
-    echo "Running xiaoya storage clean tool..."
+# 运行小雅转存清理工具
+运行_xiaoya_清理工具() {
+    echo "正在运行小雅转存清理工具..."
     bash -c "$(curl -sLk https://xiaoyahelper.ddsrem.com/aliyun_clear.sh | tail -n +2)" -s 5
 }
 
-# Main script
-echo "Welcome to the setup script!"
+# 主脚本
+echo "欢迎使用设置脚本!"
 
-# Choose action
-echo "Please choose an action:"
-echo "1. Install Docker"
-echo "2. Deploy xiaoya service"
-echo "3. Uninstall xiaoya service"
-echo "4. Run xiaoya storage clean tool"
-echo "5. Exit"
+# 选择操作
+echo "请选择要执行的操作:"
+echo "1. 安装 Docker"
+echo "2. 部署小雅服务"
+echo "3. 卸载小雅服务"
+echo "4. 运行小雅转存清理工具"
+echo "5. 退出"
 
-read -p "Enter your choice [1-5]: " choice
+read -p "请输入您的选择 [1-5]: " choice
 
 case $choice in
     1)
-        install_docker
+        安装_docker
         ;;
     2)
-        deploy_xiaoya
+        部署_xiaoya
         ;;
     3)
-        uninstall_xiaoya
+        卸载_xiaoya
         ;;
     4)
-        xiaoya_storage_clean
+        运行_xiaoya_清理工具
         ;;
     5)
-        echo "Exiting script."
+        echo "退出脚本."
         exit 0
         ;;
     *)
-        echo "Invalid choice. Exiting."
+        echo "无效的选择. 退出."
         exit 1
         ;;
 esac
 
-echo "Setup script completed."
+echo "设置脚本完成."
