@@ -1,7 +1,7 @@
 ### Docker安装
 一键安装命令
 ```
-curl -fsSL https://github.com/skywrt/docker/releases/download/latest/linux.sh| bash -s docker --mirror Aliyun
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/skywrt/docker/main/docker.sh)"
 ```
 ### 部署或更新脚本
 
