@@ -18,7 +18,7 @@ jobs:
 
     - name: Download installers
       run: |
-         curl -o linux.sh "https://get.docker.com"
+         curl -o docker.sh "https://get.docker.com"
 
     - name: Release
       uses: softprops/action-gh-release@v2
