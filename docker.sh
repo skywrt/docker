@@ -7,6 +7,7 @@ if ! command -v docker &> /dev/null; then
         exit 1
     fi
     read -rp "Docker 未安装，是否安装？(y/n): " install
+    install=${install:-y}
     if [ "$install" = "y" ]; then
         echo "安装 Docker..."
         curl -fsSL https://github.com/skywrt/docker/releases/download/latest/docker.sh | bash -s docker --mirror Aliyun
@@ -21,6 +22,7 @@ fi
 # 检查是否安装了 compose 插件，docker compose 命令
 if ! docker compose &> /dev/null && ! which docker-compose &> /dev/null; then
     read -rp "Docker Compose 未安装，是否安装？(y/n): " install
+    install=${install:-y}
     if [ "$install" = "y" ]; then
         echo "安装 Docker Compose..."
         # 判断系统是 x86 还是 arm，arm 有很多种类，都要判断
