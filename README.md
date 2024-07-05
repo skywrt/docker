@@ -1,11 +1,15 @@
 ### Docker安装
-一键安装命令
+
 ```
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/skywrt/docker/main/docker.sh)"
 ```
-### 部署或更新脚本
+### luci-app-passwall安装
 
-> 脚本支持重复执行
+```
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/skywrt/docker/main/install-passwall.sh)"
+```
+
+### 部署或更新脚本
 
 ```bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/skywrt/docker/main/install.sh)"
