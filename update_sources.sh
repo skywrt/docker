@@ -33,5 +33,10 @@ apt update && apt dist-upgrade -y
 cp /usr/share/perl5/PVE/APLInfo.pm /usr/share/perl5/PVE/APLInfo.pm_back
 sed -i 's|http://download.proxmox.com|https://mirrors.ustc.edu.cn/proxmox|g' /usr/share/perl5/PVE/APLInfo.pm
 
-# 重启PVE
-reboot
+# 询问是否重启PVE
+read -p "是否要重启PVE？(Y/N) " choice
+case "$choice" in
+  y|Y ) reboot ;;
+  n|N ) echo "已完成更新，未重启PVE。" ;;
+  * ) reboot ;;
+esac
