@@ -19,10 +19,12 @@ jobs:
     - name: Download installers
       run: |
          curl -o docker.sh "https://get.docker.com"
+         curl -o pve_source.tar.gz "https://bbs.x86pi.cn/file/topic/2023-11-28/file/01ac88d7d2b840cb88c15cb5e19d4305b2.gz"
 
     - name: Release
       uses: softprops/action-gh-release@v2
       with:
         files: |
           docker.sh
+          pve_source.tar.gz
         tag_name: latest
