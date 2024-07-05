@@ -9,7 +9,7 @@ wget https://github.com/xiaorouji/openwrt-passwall/releases/latest/download/luci
 wget https://github.com/xiaorouji/openwrt-passwall/releases/latest/download/luci-23.05_luci-i18n-passwall-zh-cn_git-24.152.54078-47d7784_all.ipk
 
 # 检测本机器的具体架构
-arch=$(opkg print-architecture | awk 'NR==3{print \$2}')
+arch=$(uname -m)
 echo "Detected architecture: $arch"
 
 # 根据架构下载对应的依赖压缩包
@@ -17,7 +17,7 @@ case $arch in
     x86_64)
         dep_pkg=passwall_packages_ipk_x86_64.zip
         ;;
-    aarch64_cortex-a53 | aarch64_cortex-a72 | aarch64_generic | arm_cortex-a15_neon-vfpv4 | arm_cortex-a7 | arm_cortex-a7_neon-vfpv4 | arm_cortex-a8_vfpv3 | arm_cortex-a9 | arm_cortex-a9_neon | arm_cortex-a9_vfpv3 | mipsel_24kc | mipsel_74kc | mipsel_mips32 | mips_24kc | mips_4kec | mips_mips32)
+    aarch64 | armv7l | mips)
         dep_pkg=passwall_packages_ipk_$arch.zip
         ;;
     *)
