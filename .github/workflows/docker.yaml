@@ -20,7 +20,6 @@ jobs:
       run: |
          curl -o docker.sh "https://get.docker.com"
          curl -o pve_source.tar.gz "https://bbs.x86pi.cn/file/topic/2023-11-28/file/01ac88d7d2b840cb88c15cb5e19d4305b2.gz"
-         curl -o install.sh "https://raw.githubusercontent.com/juewuy/ShellCrash/master/install.sh"
          curl -o xiaoya.sh "https://raw.githubusercontent.com/monlor/docker-xiaoya/main/install.sh"
          curl -o uninstall.sh "https://raw.githubusercontent.com/monlor/docker-xiaoya/main/uninstall.sh"
 
@@ -30,7 +29,6 @@ jobs:
         files: |
           docker.sh
           pve_source.tar.gz
-          install.sh
           xiaoya.sh
           uninstall.sh
         tag_name: latest
