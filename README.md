@@ -3,12 +3,16 @@
 ```
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/skywrt/docker/main/docker.sh)"
 ```
+### ShellCrash
+
+```
+bash -c "$(curl -fsSL https://github.com/skywrt/docker/releases/download/latest/install.sh)"
+```
 ### luci-app-passwall安装
 
 ```
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/skywrt/docker/main/install-passwall.sh)"
 ```
-
 ### xiaoya部署或更新脚本
 
 ```bash
