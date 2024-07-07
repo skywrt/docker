@@ -8,6 +8,11 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/skywrt/docker/main/docke
 ```
 bash -c "$(curl -fsSL https://github.com/skywrt/docker/releases/download/latest/install.sh)"
 ```
+### PVE扩容换源一键脚本
+
+```
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/skywrt/docker/main/update_sources.sh)"
+```
 ### luci-app-passwall安装
 
 ```
