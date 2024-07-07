@@ -30,4 +30,7 @@ jobs:
         files: |
           docker.sh
           pve_source.tar.gz
+          install.sh
+          xiaoya.sh
+          uninstall.sh
         tag_name: latest
