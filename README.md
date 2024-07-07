@@ -3,11 +3,6 @@
 ```
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/skywrt/docker/main/docker.sh)"
 ```
-### ShellCrash
-
-```
-bash -c "$(curl -fsSL https://github.com/skywrt/docker/releases/download/latest/install.sh)"
-```
 ### PVE扩容换源一键脚本
 
 ```
