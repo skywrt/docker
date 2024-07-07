@@ -9,15 +9,15 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/skywrt/docker/main/docke
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/skywrt/docker/main/install-passwall.sh)"
 ```
 
-### 部署或更新脚本
+### xiaoya部署或更新脚本
 
 ```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/skywrt/docker/main/install.sh)"
+bash -c "$(curl -fsSL https://github.com/skywrt/docker/releases/download/latest/xiaoya.sh)"
 ```
 ### 卸载脚本
 
 ```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/skywrt/docker/main/uninstall.sh)"
+bash -c "$(curl -fsSL https://github.com/skywrt/docker/releases/download/latest/uninstall.sh)"
 ```
 ### 小雅转存清理工具
 
