@@ -29,14 +29,14 @@ DOWNLOAD_URL="${GH_PROXY}https://raw.githubusercontent.com/monlor/docker-xiaoya/
 
 # 欢迎信息
 echo "欢迎使用xiaoya服务部署脚本"
-echo "项目地址：https://github.com/monlor/docker-xiaoya"
-echo "作者：monlor (https://link.monlor.com)"
+echo "项目地址：https://github.com/skywrt/docker"
+echo "作者：skywrt"
 echo
 
 # 检查docker服务是否存在，不存在则询问用户是否安装，不安装退出脚本
 if ! command -v docker &> /dev/null; then
   if [ "$(uname -o)" = "Darwin" ]; then
-    echo "Docker 未安装，请安装docker后再运行脚本，推荐OrbStack：https://orbstack.dev/"
+    echo "Docker 未安装，请安装docker后再运行脚本"
     exit 1
   fi
   read -rp "Docker 未安装，是否安装？(y/n): " install
@@ -70,6 +70,7 @@ if ! docker compose &> /dev/null && ! which docker-compose &> /dev/null; then
     curl -SL "${GH_PROXY}https://github.com/docker/compose/releases/download/v2.27.1/$file" -o /usr/local/bin/docker-compose
     chmod +x /usr/local/bin/docker-compose
   else
+
     echo "退出安装"
     exit 1
   fi
@@ -110,7 +111,7 @@ EOF
   
 fi
 
-DOCKER_HOME="$(docker info | grep "Docker Root Dir" | awk -F ':' '{print\$2}')"
+DOCKER_HOME="$(docker info | grep "Docker Root Dir" | awk -F ':' '{print$2}')"
 
 # 选择数据保存位置
 data_location=1
