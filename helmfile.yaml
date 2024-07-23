@@ -1,0 +1,165 @@
+# 定义全局的repositories
+repositories:
+  - name: monlor
+    url: https://monlor.github.io/helm-charts
+
+releases:
+  - name: alist
+    namespace: media
+    chart: monlor/quickchart
+    version: 0.3.2
+    values:
+      - port: 5678
+        extraPort:
+        - port: 2345
+          protocol: TCP
+        - port: 2346
+          protocol: TCP
+        nodeSelector:
+          kubernetes.io/hostname: nuc-1-node-1
+        image:
+          repository: ghcr.io
+          name: monlor/xiaoya-alist
+          tag: latest
+          pullPolicy: Always
+        env:
+          TZ: Asia/Shanghai
+          AUTO_UPDATE_ENABLED: true
+          AUTO_CLEAR_ENABLED: true
+          WEBDAV_PASSWORD: 
+          ALIYUN_TOKEN: 
+          ALIYUN_OPEN_TOKEN: 
+          ALIYUN_FOLDER_ID: 
+          QUARK_COOKIE:
+          PAN115_COOKIE:
+          PIKPAK_USER:
+        volumes:
+        - name: data
+          mountPath: /data
+          hostPath: 
+            path: /opt/xiaoya/data
+            type: DirectoryOrCreate
+        health:
+          enabled: false
+        strategy:
+          type: Recreate
+        resources: 
+          limits:
+            cpu: 2
+            memory: 4Gi
+          requests:
+            cpu: 100m
+            memory: 1Gi
+        ingress:
+          enabled: true
+          className: nginx
+          clusterIssuer: cloudflare
+          hosts:
+          - host: alist.monlor.cn
+          - host: emby.monlor.cn
+            port: 2345
+  
+  - name: metadata
+    namespace: media
+    chart: monlor/quickchart
+    version: 0.3.2
+    values:
+      - nodeSelector:
+          kubernetes.io/hostname: nuc-1-node-1
+        image:
+          repository: ghcr.io
+          name: monlor/xiaoya-metadata
+          tag: latest
+          pullPolicy: Always  
+        env:
+          TZ: Asia/Shanghai
+          # ALIST_ADDR: http://alist:5678
+          EMBY_ENABLED: true
+          JELLYFIN_ENABLED: false
+          AUTO_UPDATE_EMBY_CONFIG_ENABLED: true
+          AUTO_UPDATE_EMBY_METADATA_ENABLED: true
+        volumes:
+        - name: data
+          mountPath: /etc/xiaoya
+          hostPath: 
+            path: /opt/xiaoya/data
+            type: DirectoryOrCreate
+        - name: media
+          mountPath: /media/xiaoya
+          hostPath: 
+            path: /opt/xiaoya/media
+            type: DirectoryOrCreate
+        - name: config
+          mountPath: /media/config
+          hostPath: 
+            path: /opt/xiaoya/config
+            type: DirectoryOrCreate
+        - name: meta
+          mountPath: /media/temp
+          hostPath: 
+            path: /opt/xiaoya/temp
+            type: DirectoryOrCreate
+        health:
+          enabled: false
+        strategy:
+          type: Recreate
+        resources: 
+          limits:
+            cpu: 4
+            memory: 8Gi
+          requests:
+            cpu: 100m
+            memory: 512Mi
+
+  - name: emby
+    namespace: media
+    chart: monlor/quickchart
+    version: 0.3.2
+    values:
+      - port: 6908
+        extraPort:
+          - port: 8080
+            protocol: TCP
+        nodeSelector:
+          kubernetes.io/hostname: nuc-1-node-1
+        image:
+          repository: ghcr.io
+          name: monlor/xiaoya-embyserver
+          tag: latest
+          pullPolicy: Always  
+        env:
+          TZ: Asia/Shanghai
+          # ALIST_ADDR: http://alist:5678
+        volumes:
+        - name: media
+          mountPath: /media
+          hostPath: 
+            path: /opt/xiaoya/media
+            type: DirectoryOrCreate
+        - name: config
+          mountPath: /config
+          hostPath: 
+            path: /opt/xiaoya/config
+            type: DirectoryOrCreate
+        - name: cache
+          mountPath: /cache
+          hostPath: 
+            path: /opt/xiaoya/config/cache
+            type: DirectoryOrCreate
+        health:
+          enabled: false
+        strategy:
+          type: Recreate
+        resources: 
+          limits:
+            cpu: 4
+            memory: 8Gi
+          requests:
+            cpu: 500m
+            memory: 1Gi
+        # ingress:
+        #   enabled: true
+        #   className: nginx
+        #   clusterIssuer: cloudflare
+        #   hosts:
+        #   - host: emby.monlor.cn
