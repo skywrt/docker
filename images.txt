@@ -1,8 +1,8 @@
 #支持私库
-hsuyelin/nas-tools:latest
-allanpk716/chinesesubfinder:latest
-deluan/navidrome:latest
-ghcr.io/gethomepage/homepage:latest
-
+#hsuyelin/nas-tools:latest
+#allanpk716/chinesesubfinder:latest
+#deluan/navidrome:latest
+#ghcr.io/gethomepage/homepage:latest
+moonrailgun/tianji
 #支持指定架构
 #--platform=linux/amd64 hsuyelin/nas-tools:latest
