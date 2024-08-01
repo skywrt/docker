@@ -4,5 +4,6 @@ allanpk716/chinesesubfinder:latest
 deluan/navidrome:latest
 ghcr.io/gethomepage/homepage:latest
 moonrailgun/tianji
+cloudflare/cloudflared:latest
 #支持指定架构
 #--platform=linux/amd64 hsuyelin/nas-tools:latest
