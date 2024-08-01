@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# echo "换源"
+sed -i 's/downloads.openwrt.org/mirrors.tuna.tsinghua.edu.cn\/openwrt/g' /etc/opkg/distfeeds.conf
+opkg update
+opkg install unzip curl nano kmod-nft-socket
+
 # 在/tmp目录下新建一个myipk文件夹
 mkdir -p /tmp/myipk
 cd /tmp/myipk
