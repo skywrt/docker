@@ -5,8 +5,8 @@ mkdir -p /tmp/myipk
 cd /tmp/myipk
 
 # 下载Latest标签版本的openwrt-23.05主程序和语言包（只会下载更新的文件）
-wget -N https://github.com/xiaorouji/openwrt-passwall/releases/latest/download/luci-23.05_luci-app-passwall_4.77-6_all.ipk
-wget -N https://github.com/xiaorouji/openwrt-passwall/releases/latest/download/luci-23.05_luci-i18n-passwall-zh-cn_git-24.152.54078-47d7784_all.ipk
+wget -N https://github.com/xiaorouji/openwrt-passwall/releases/latest/download/luci-23.05_luci-app-passwall_4.78-1_all.ipk
+wget -N https://github.com/xiaorouji/openwrt-passwall/releases/latest/download/luci-23.05_luci-i18n-passwall-zh-cn_git-24.199.60095-4dbb164_all.ipk
 
 # 检测本机器的具体架构
 arch=$(uname -m)
